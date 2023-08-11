@@ -62,12 +62,29 @@ uint32_t time_debounce;
 uint32_t time_start_press;
 uint8_t is_press_timeout;
 
-uint8_t test ;
+//========================== LED =============================
+typedef enum{
+	LED_OFF,
+	LED1_BLINK_1HZ,
+	LED1_BLINK_5HZ,
+}LedStatus;
+LedStatus led_status = LED_OFF;
+
 void btn_pressing_callback(){
-	test = 1;
+	switch(led_status)
+	{
+		case LED_OFF:
+				led_status = LED1_BLINK_1HZ;
+			break;
+		case LED1_BLINK_1HZ:
+				led_status = LED1_BLINK_5HZ;
+			break;
+		case LED1_BLINK_5HZ:
+				led_status = LED_OFF;
+			break;
+	}
 }
 void btn_release_callback(){
-	test = 2;
 }
 void btn_press_short_callback(){  // nhan nha ra luon
 	
@@ -130,7 +147,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+	
   /* USER CODE END Init */
 
   /* Configure the system clock */
