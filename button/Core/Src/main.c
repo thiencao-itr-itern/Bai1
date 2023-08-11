@@ -141,7 +141,7 @@ void led_handle(){
 		switch(led_status)
 	{
 		case LED_OFF:
-			âsas
+			//ahshas
 			break;
 		case LED1_BLINK_1HZ:
 				ledbink1hz();
