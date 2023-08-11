@@ -100,7 +100,6 @@ void button_handle(){
 		is_debouncing = 1;
 		time_debounce = HAL_GetTick();
 	}
-	
 	// xu ly debounce
 	if(is_debouncing == 1 && HAL_GetTick() - time_debounce >= 15){
 		btn_current = btn_filter;
@@ -127,6 +126,29 @@ void button_handle(){
 	{
 		btn_press_long_callback();
 		is_press_timeout = 0;
+	}
+}
+void ledbink1hz(){
+
+}
+void ledbink5hz(){
+
+}
+
+// su kien nut nhan chuyen doi trang thai, con su kien led_handle xu ly trang thai nut nhan
+// goi led_handle trong ham main
+void led_handle(){
+		switch(led_status)
+	{
+		case LED_OFF:
+			âsas
+			break;
+		case LED1_BLINK_1HZ:
+				ledbink1hz();
+			break;
+		case LED1_BLINK_5HZ:
+				ledbink5hz();
+			break;
 	}
 }
 /* USER CODE END 0 */
@@ -171,6 +193,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		button_handle();
+		led_handle();
   }
   /* USER CODE END 3 */
 }
